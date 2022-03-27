@@ -13,59 +13,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val sameGridView = SameGridView(this)
-        val n = Data.n
-        val m = Data.m
-        sameGridView.rowCount = n
-        sameGridView.columnCount = m
+        val game = MainGame()
 
-        val field = SameMaster().getRandomField(n, m)
-
-        sameGridView.fill(m, n, field)
-
-        sameGridView.setOnChildClickListener { x, y, view ->
-            if (view.state == SameViewState.CLOSED) {
-                if (sameGridView.opened[0] == -1) {
-                    Log.d("AAA", view.svId.toString())
-                    sameGridView.opened[0] = view.svId
-                    view.open()
-                } else if (sameGridView.opened[1] == -1) {
-                    sameGridView.opened[1] = view.svId
-                    view.open()
-                    if (SameMaster().mathes(sameGridView.opened[0], sameGridView.opened[1])) {
-                        sameGridView.allViews.forEachIndexed { i: Int, view: View ->
-                            if (i != 0) {
-                                view as SameView
-                                if (view.svId == sameGridView.opened[0]) {
-                                    view.state = SameViewState.DONE
-                                    view.invalidate()
-                                }
-                            }
-                        }
-                        sameGridView.opened = MutableList(2) { -1 }
-                    } else {
-
-                        object : CountDownTimer(1000, 1000) {
-                            override fun onTick(p0: Long) {
-                            }
-
-                            override fun onFinish() {
-                                sameGridView.allViews.forEachIndexed { i: Int, view: View ->
-                                    if (i != 0) {
-                                        view as SameView
-                                        if (view.state == SameViewState.OPENED) {
-                                            view.state = SameViewState.CLOSED
-                                            view.close()
-                                        }
-                                    }
-                                }
-                                sameGridView.opened = MutableList(2) { -1 }
-                            }
-                        }.start()
-                    }
-                }
-            }
-        }
+        val sameGridView = SameMaster().fieldSetUp(SameGridView(this))
         setContentView(sameGridView)
 
 

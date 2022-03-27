@@ -13,5 +13,4 @@ object Data {
         8 to R.drawable.cloudsun,
         10 to R.drawable.m
     )
-
 }

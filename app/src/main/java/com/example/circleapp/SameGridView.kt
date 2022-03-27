@@ -5,11 +5,12 @@ import android.widget.GridLayout
 import androidx.core.view.allViews
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class SameGridView(context: Context) : GridLayout(context) {
     var opened = MutableList(2) { -1 }
-
+//    val state : SameGridState = SameGridState.ALIVE
 
 
 //    fun clickOnChild(x: Int, y: Int) {
