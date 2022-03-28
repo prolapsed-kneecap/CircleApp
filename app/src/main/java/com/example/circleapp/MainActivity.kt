@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         val game = MainGame()
 
-        val sameGridView = SameMaster().fieldSetUp(SameGridView(this))
+        val sameGridView = SameMaster().fieldSetUp  (SameGridView(this))
         setContentView(sameGridView)
 
 
