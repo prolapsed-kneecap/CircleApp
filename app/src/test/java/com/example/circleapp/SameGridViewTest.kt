@@ -5,7 +5,7 @@ import junit.framework.Assert.assertTrue
 import junit.framework.Assert.assertFalse
 import org.junit.Test
 
-class SameViewTest {
+class CheckIfDoneTest {
     @Test
     fun checkIfDoneT() = assertTrue(MainGame().checkIfDone(listOf(-1, -1, -1)))
 

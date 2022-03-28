@@ -7,16 +7,17 @@ class MainGame {
     var opened = MutableList(2) { -1 }
     val idField = setRandomGameField(Data.n, Data.m)
     val stateField = MutableList(Data.n * Data.m) { 0 }
+
     fun open(ind: Int) {
-        stateField[ind - 1] = 1
+        stateField[ind] = 1
     }
 
     fun close(ind: Int) {
-        stateField[ind - 1] = 0
+        stateField[ind] = 0
     }
 
     fun done(ind: Int) {
-        stateField[ind - 1] = -1
+        stateField[ind] = -1
     }
 
     private fun setRandomGameField(n: Int, m: Int): List<Int> {
